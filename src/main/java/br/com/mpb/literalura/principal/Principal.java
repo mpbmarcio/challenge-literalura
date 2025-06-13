@@ -108,13 +108,11 @@ public class Principal {
         System.out.println("Total de " + statistics1.getCount() + " Autores analisados.");
         desenhaLinha();
         System.out.println("📅 ANO DE NASCIMENTO:");
-        System.out.printf("📚 Total analisado  : %d%n", statistics1.getCount());
         System.out.printf("📊 Média de Nasc.   : %.2f%n", statistics1.getAverage());
         System.out.printf("📉 Mínimo           : %d%n", statistics1.getMin());
         System.out.printf("📈 Máximo           : %d%n", statistics1.getMax());
         desenhaLinha();
         System.out.println("⚰️ ANO DE MORTE:");
-        System.out.printf("📚 Total analisado  : %d%n", statistics2.getCount());
         System.out.printf("📊 Média de Morte   : %.2f%n", statistics2.getAverage());
         System.out.printf("📉 Mínimo           : %d%n", statistics2.getMin());
         System.out.printf("📈 Máximo           : %d%n", statistics2.getMax());
@@ -128,7 +126,11 @@ public class Principal {
 
         while (totalPaginas <= 0) {
             try {
-                System.out.println("Digite a quantidade de páginas (1 até ...):");
+                System.out.println("📄 Digite a quantidade de páginas (1 até ...):");
+                System.out.println("📚 Atualmente a API conta com 76076 livros");
+                System.out.println("🗂️ cadastrados, gerando aprox. 2377 páginas.");
+                System.out.println("⏳ Isso levaria horas! 😅");
+
                 desenhaSeta();
                 totalPaginas = Integer.parseInt(leitura.nextLine().trim());
 
@@ -185,7 +187,11 @@ public class Principal {
         }
         desenhaLinha();
         List<Person> lista = personRepository.findByBirthYearLessThanEqualAndDeathYearGreaterThanEqual(ano, ano);
-        System.out.println(lista);
+        if (lista.size() == 0) {
+            System.out.println("❌ Nenhum Autor encontrado!");
+        } else {
+            System.out.println(lista);
+        }
     }
 
     private void listarAutoresCadastrados() {
